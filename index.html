@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Tax and Multi Services - Expert Tax Preparation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #1c404c;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1c404c 0%, #2a5a6a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ddaf56;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1fb855;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-booking {
+            background: #ddaf56;
+            color: #1c404c;
+        }
+
+        .btn-booking:hover {
+            background: #c99a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(221, 175, 86, 0.4);
+        }
+
+        .benefits {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .benefits-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #1c404c;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #ddaf56;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ddaf56;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #1c404c;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        .lead-form-section {
+            padding: 80px 20px;
+            background: #1c404c;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-container h2 {
+            color: #1c404c;
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .form-container p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1c404c;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ddaf56;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: #ddaf56;
+            color: #1c404c;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #c99a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(221, 175, 86, 0.4);
+        }
+
+        .contact {
+            padding: 60px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #1c404c;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-item-icon {
+            font-size: 2.5em;
+            color: #ddaf56;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            color: #1c404c;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .contact-item p {
+            color: #666;
+        }
+
+        .contact-item a {
+            color: #1c404c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #ddaf56;
+        }
+
+        footer {
+            background: #1c404c;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .benefits h2,
+            .contact h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <img src="image/logo-w-queen-tax.png" alt="Queen Tax and Multi Services Logo" class="logo">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get Your Royal Tax Refund Today</h1>
+            <p>Expert tax preparation with a personal touch. Secure, fast, and stress-free service you can trust.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/17724446499?text=Hello!%20I'm%20interested%20in%20your%20tax%20services" class="btn btn-whatsapp" target="_blank">
+                    <span>💬</span> Chat with us on WhatsApp
+                </a>
+                <a href="#contact-form" class="btn btn-booking">
+                    <span>📅</span> Schedule Your Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="benefits-content">
+            <h2>Why Choose Queen Tax & Multi Services?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Maximum Refunds</h3>
+                    <p>We find every deduction you're entitled to. Our expert team ensures you get the largest refund possible while staying fully compliant.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Audit Protection</h3>
+                    <p>Professional support so you can sleep easy. We stand behind our work and provide full audit assistance if needed.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>Year-Round Support</h3>
+                    <p>We don't disappear after April 15th. Our team is here for you 365 days a year for all your tax and financial needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lead-form-section" id="contact-form">
+        <div class="form-container">
+            <h2>Request a Callback</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours</p>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(772) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="individual-tax">Individual Tax Preparation</option>
+                        <option value="business-tax">Business Tax Preparation</option>
+                        <option value="tax-planning">Tax Planning</option>
+                        <option value="bookkeeping">Bookkeeping Services</option>
+                        <option value="audit-support">Audit Support</option>
+                        <option value="other">Other Services</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Get a Callback</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Information</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-item-icon">📱</div>
+                <h3>Phone</h3>
+                <p><a href="tel:+17724446499">1 (772) 444-6499</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon">✉️</div>
+                <h3>Email</h3>
+                <p><a href="mailto:floridahousequeen@gmail.com">floridahousequeen@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon">📍</div>
+                <h3>Location</h3>
+                <p>1663 South Congress Avenue<br>West Palm Beach, FL 33406</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Queen Tax and Multi Services. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            const message = `New Lead Request:%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}`;
+            
+            window.open(`https://wa.me/17724446499?text=${message}`, '_blank');
+            
+            alert('Thank you! We will contact you shortly.');
+            this.reset();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
