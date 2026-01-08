@@ -5,354 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Queen Tax and Multi Services - Expert Tax Preparation</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary: #1c404c;
+            --secondary: #ddaf56;
+            --secondary-dark: #c99a3d;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text: #333;
+            --text-light: #666;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text); line-height: 1.6; }
 
-        .header {
-            background: #1c404c;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        /* --- HEADER --- */
+        .header { background: var(--primary); padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: center; }
+        .logo { max-width: 180px; height: auto; }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        /* --- HERO --- */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #2a5a6a 100%); color: white; padding: 80px 20px; text-align: center; }
+        .hero-content { max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 3em; margin-bottom: 20px; color: var(--secondary); font-weight: 700; }
+        .hero p { font-size: 1.3em; margin-bottom: 40px; opacity: 0.95; }
+        
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 18px 40px; font-size: 1.1em; border-radius: 50px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: none; }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #1fb855; transform: translateY(-2px); }
+        .btn-booking { background: var(--secondary); color: var(--primary); }
+        .btn-booking:hover { background: var(--secondary-dark); transform: translateY(-2px); }
 
-        .logo {
-            max-width: 180px;
-            height: auto;
-        }
+        /* --- BENEFITS --- */
+        .benefits { padding: 80px 20px; background: var(--white); }
+        .benefits-content { max-width: 1200px; margin: 0 auto; }
+        .benefits h2 { text-align: center; font-size: 2.5em; margin-bottom: 60px; color: var(--primary); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .benefit-card { background: var(--light-bg); padding: 40px; border-radius: 15px; border-top: 4px solid var(--secondary); transition: transform 0.3s ease; }
+        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .benefit-icon { font-size: 3em; margin-bottom: 20px; color: var(--secondary); }
+        .benefit-card h3 { font-size: 1.5em; margin-bottom: 15px; color: var(--primary); }
 
-        .hero {
-            background: linear-gradient(135deg, #1c404c 0%, #2a5a6a 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
+        /* --- FAQ SECTION --- */
+        .faq { padding: 80px 20px; background: var(--light-bg); }
+        .faq-content { max-width: 800px; margin: 0 auto; }
+        .faq h2 { text-align: center; font-size: 2.5em; color: var(--primary); margin-bottom: 10px; }
+        .faq-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; }
+        .faq-container { display: flex; flex-direction: column; gap: 15px; }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .faq-item { background: var(--white); border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .faq-item:hover { border-color: var(--secondary); }
+        .faq-question { width: 100%; padding: 22px 25px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; text-align: left; }
+        .faq-question-text { font-size: 1.1em; font-weight: 600; color: var(--primary); padding-right: 20px; }
+        .faq-icon { color: var(--secondary); transition: transform 0.4s ease; flex-shrink: 0; }
 
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #ddaf56;
-            font-weight: 700;
-            line-height: 1.2;
-        }
+        .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
+        .faq-item.active { border-color: var(--secondary); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .faq-item.active .faq-answer { grid-template-rows: 1fr; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .faq-answer-content { overflow: hidden; }
+        .faq-answer-content p { padding: 0 25px 25px 25px; color: #555; line-height: 1.7; }
 
-        .hero p {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
+        /* --- FORM SECTION --- */
+        .lead-form-section { padding: 80px 20px; background: var(--primary); color: white; }
+        .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; color: var(--text); }
+        .form-container h2 { text-align: center; color: var(--primary); margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; transition: 0.3s; }
+        .form-group input:focus { border-color: var(--secondary); outline: none; }
+        .btn-submit { width: 100%; padding: 18px; background: var(--secondary); color: var(--primary); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1.1em; }
+        .btn-submit:hover { background: var(--secondary-dark); }
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
+        /* --- CONTACT --- */
+        .contact { padding: 60px 20px; text-align: center; background: var(--white); }
+        .contact-info { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1000px; margin: 40px auto; }
+        .contact-item { flex: 1; min-width: 250px; padding: 30px; border-radius: 15px; background: var(--light-bg); }
+        .contact-item a { color: var(--primary); text-decoration: none; font-weight: bold; }
 
-        .btn {
-            padding: 18px 40px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background: #1fb855;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-booking {
-            background: #ddaf56;
-            color: #1c404c;
-        }
-
-        .btn-booking:hover {
-            background: #c99a3d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(221, 175, 86, 0.4);
-        }
-
-        .benefits {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-
-        .benefits-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefits h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 60px;
-            color: #1c404c;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #ddaf56;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-
-        .benefit-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #ddaf56;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #1c404c;
-        }
-
-        .benefit-card p {
-            color: #666;
-            font-size: 1.05em;
-        }
-
-        .lead-form-section {
-            padding: 80px 20px;
-            background: #1c404c;
-            color: white;
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .form-container h2 {
-            color: #1c404c;
-            font-size: 2em;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .form-container p {
-            color: #666;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #1c404c;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #ddaf56;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: #ddaf56;
-            color: #1c404c;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .btn-submit:hover {
-            background: #c99a3d;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(221, 175, 86, 0.4);
-        }
-
-        .contact {
-            padding: 60px 20px;
-            background: #f8f9fa;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #1c404c;
-        }
-
-        .contact-info {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .contact-item {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .contact-item-icon {
-            font-size: 2.5em;
-            color: #ddaf56;
-            margin-bottom: 15px;
-        }
-
-        .contact-item h3 {
-            color: #1c404c;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .contact-item p {
-            color: #666;
-        }
-
-        .contact-item a {
-            color: #1c404c;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact-item a:hover {
-            color: #ddaf56;
-        }
-
-        footer {
-            background: #1c404c;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.8;
-        }
+        footer { background: var(--primary); color: white; padding: 40px; text-align: center; }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-
-            .hero p {
-                font-size: 1.1em;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .form-container {
-                padding: 30px 20px;
-            }
-
-            .benefits h2,
-            .contact h2 {
-                font-size: 2em;
-            }
+            .hero h1 { font-size: 2.2em; }
+            .benefits-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <header class="header">
         <div class="header-content">
-            <img src="logo-w-queen-tax.png" alt="Queen Tax and Multi Services Logo" class="logo">
+            <img src="image/logo-w-queen-tax.png" alt="Queen Tax Logo" class="logo">
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Get Your Royal Tax Refund Today</h1>
-            <p>Expert tax preparation with a personal touch. Secure, fast, and stress-free service you can trust.</p>
-            
+            <h1>Reliable Preparation Services You Can Trust for tax season 2026</h1>
+            <p>Expert-led tax preparation with individualized attention. Trusted support for a smooth 2026 filing season.</p>
             <div class="cta-buttons">
-                <a href="https://wa.me/17724446499?text=Hello!%20I'm%20interested%20in%20your%20tax%20services" class="btn btn-whatsapp" target="_blank">
-                    <span>💬</span> Chat with us on WhatsApp
-                </a>
-                <a href="#contact-form" class="btn btn-booking">
-                    <span>📅</span> Schedule Your Consultation
-                </a>
+                <a href="https://wa.me/17724446499" class="btn btn-whatsapp"><span>💬</span> Chat on WhatsApp</a>
+                <a href="#contact-form" class="btn btn-booking"><span>📅</span> Schedule Your Consultation</a>
             </div>
         </div>
     </section>
@@ -383,50 +137,88 @@
     <section class="lead-form-section" id="contact-form">
         <div class="form-container">
             <h2>Request a Callback</h2>
-            <p>Fill out the form below and we'll get back to you within 24 hours</p>
-            <form id="leadForm">
+            <form name="tax-leads" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="tax-leads" />
+                
                 <div class="form-group">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    <input type="text" name="name" id="name" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="(772) 123-4567">
+                    <input type="tel" name="phone" id="phone" required placeholder="(772) 444-6499">
                 </div>
                 <div class="form-group">
                     <label for="service">Service Needed *</label>
-                    <select id="service" name="service" required>
+                    <select name="service" id="service" required>
                         <option value="">Select a service</option>
                         <option value="individual-tax">Individual Tax Preparation</option>
                         <option value="business-tax">Business Tax Preparation</option>
                         <option value="tax-planning">Tax Planning</option>
                         <option value="bookkeeping">Bookkeeping Services</option>
-                        <option value="audit-support">Audit Support</option>
-                        <option value="other">Other Services</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-submit">Get a Callback</button>
+                <button type="submit" class="btn-submit">Get My Tax Quote</button>
             </form>
         </div>
     </section>
 
+    <section class="faq">
+        <div class="faq-content">
+            <h2>Frequently Asked Questions</h2>
+            <p class="faq-subtitle">Get answers to common tax questions for the 2026 filing season</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-question-text">What documents should I gather for 2026?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Gather W-2s, 1099 forms, last year's tax return, receipts for deductions, mortgage interest statements, and proof of health insurance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-question-text">How long do refunds take?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Most e-filed refunds are processed within 21 days. Direct deposit is highly recommended for the fastest service.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-question-text">How long should I keep tax records?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon"><path d="m6 9 6 6 6-6"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Generally, you should keep tax records for 3 years. Some records like property or investment documents should be kept longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact">
-        <h2>Contact Information</h2>
+        <h2>Contact Us</h2>
         <div class="contact-info">
             <div class="contact-item">
-                <div class="contact-item-icon">📱</div>
-                <h3>Phone</h3>
-                <p><a href="tel:+17724446499">1 (772) 444-6499</a></p>
+                <p>📱 <strong>Phone:</strong><br><a href="tel:+17724446499">1 (772) 444-6499</a></p>
             </div>
             <div class="contact-item">
-                <div class="contact-item-icon">✉️</div>
-                <h3>Email</h3>
-                <p><a href="mailto:floridahousequeen@gmail.com">floridahousequeen@gmail.com</a></p>
+                <p>✉️ <strong>Email:</strong><br><a href="mailto:floridahousequeen@gmail.com">floridahousequeen@gmail.com</a></p>
             </div>
             <div class="contact-item">
-                <div class="contact-item-icon">📍</div>
-                <h3>Location</h3>
-                <p>1663 South Congress Avenue<br>West Palm Beach, FL 33406</p>
+                <p>📍 <strong>Location:</strong><br>West Palm Beach, FL 33406</p>
             </div>
         </div>
     </section>
@@ -436,27 +228,18 @@
     </footer>
 
     <script>
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            
-            const message = `New Lead Request:%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}`;
-            
-            window.open(`https://wa.me/17724446499?text=${message}`, '_blank');
-            
-            alert('Thank you! We will contact you shortly.');
-            this.reset();
-        });
+        // FAQ SCRIPT
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    faqItem.classList.add('active');
                 }
             });
         });
